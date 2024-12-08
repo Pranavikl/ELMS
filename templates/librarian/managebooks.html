@@ -1,0 +1,53 @@
+{% extends 'Navbar/librariannavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Books</title>
+</head>
+<body>
+{% block body %}
+<div class="container1" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-image: url('{% static "images/bgimage.png" %}'); background-size: cover;">
+
+<br><br>
+<div class="bodycontainer" style="display: block; border: 1px solid #ccc; padding: 70px; border-radius: 5px; background-color: #F5CBA7; margin: 0 auto; width: fit-content;">
+
+<div>
+    <div class = "container mt-9" >
+        <h3> Posting Books</h3>
+        <form method="post" action="{% url 'librarian:add_book_details' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for = "BookTitle">Book Title</label>
+                <input type = "text" class = "form-control" name="BookTitle" id = "BookTitle" placeholder="Enter the Book title">
+            </div>
+            <div class="form-group">
+                <label for = "BookId">BookId</label>
+                <input type = "text" class = "form-control" name="BookId" id = "BookId" placeholder="Enter the Book IDn">
+            </div>
+            <div class="form-group">
+                <label for = "BookYear">BookYear</label>
+                <select class = "form-control" name="BookYear" id = "BookYear" placeholder="Enter the Book Year">
+                    <option value="1st Year">1st yr</option>
+                    <option value="2nd Year">2nd yr</option>
+                    <option value="3rd Year">3rd yr</option>
+                    <option value="4th Year">4th yr</option>
+                </select>
+                <div class="form-group">
+                <label for = "published_year">Published_year</label>
+                <input type = "text" class = "form-control" name="published_year" id = "published_year" placeholder="Enter the published year">
+                </div>
+                    <div class = "form-group">
+                    <label for = "remarks">Remarks</label>
+                    <textarea class = "form-control" name = "remarks" id = "remarks" rows = "2" placeholder="Enter your remarks "></textarea>
+                    </div>
+
+                <button type="submit" class="btn btn-success">Post the Book</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

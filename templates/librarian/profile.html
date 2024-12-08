@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAE5D3;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            background-color: #F5CBA7;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-info img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-info h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5D6D7E;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .edit-form {
+            display: none;
+        }
+
+        .edit-form input[type="text"],
+        .edit-form input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+
+            <div>
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                <p>Email: {{ user.email }}</p>
+                <p>Role: Librarian</p>
+            </div>
+        </div>
+        <a href="#" class="button" id="edit-profile-btn">Edit Profile</a>
+
+        <form class="edit-form" id="edit-form" method="POST" action="{% url 'update_profile' %}">
+            {% csrf_token %}
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first_name" value="{{ user.first_name }}"><br>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last_name" value="{{ user.last_name }}"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}"><br>
+
+            <input type="submit" class="button" value="Save">
+        </form>
+    </div>
+</div>
+
+
+    <script>
+        document.getElementById('edit-profile-btn').addEventListener('click', function() {
+            document.querySelector('.profile-info').style.display = 'none';
+            document.querySelector('.edit-form').style.display = 'block';
+        });
+    </script>
+
+</body>
+
+</html>

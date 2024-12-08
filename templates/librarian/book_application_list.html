@@ -1,0 +1,57 @@
+{% extends 'Navbar/librariannavbar.html' %}
+{% load static %}
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Applications</title>
+</head>
+<body>
+{% block body %}
+
+<div class="container1" style="display: flex; justify-content: left; align-items: left; height: 100vh; background-image: url('{% static "images/bgimage.png" %}'); background-size: cover;">
+<br><br><br>
+    <h1>Book Applicants List<br><br><br></h1>
+
+    <table border="2">
+        <thead>
+         <tr>
+             <th>Name</th>
+             <th>Email</th>
+             <th>ID Card</th>
+<!--            <th>Action </th>-->
+         </tr>
+        </thead>
+        <tbody>
+            {% for book_application in book_applications %}
+        <tr>
+           <td>{{book_application.name}}</td>
+            <td>{{book_application.email}}</td>
+
+            <td>
+                {% if book_application.id_document %}
+                <a href="{{book_application.id_document.url}}" target="_blank">Download ID</a>
+                {% else %}
+                No ID uploaded
+                {% endif %}
+            </td>
+<!--            <td>-->
+<!--                <a href="#" class="btn btn-success">Accept</a>-->
+<!--                <a href ="#" class="btn btn-danger">Reject</a>-->
+<!--            </td>-->
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <style>
+        table,th,td {
+        border:2px solid black;
+        }
+    </style>
+    {%endblock %}
+
+</body>
+</html>
+

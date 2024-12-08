@@ -1,0 +1,41 @@
+{% extends 'Navbar/librariannavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<div class="container1" style="display: flex; justify-content: center; align-items: center; height: 100vh; background-image: url('{% static "images/bgimage.png" %}'); background-size: cover;">
+
+<div class="container mt-5">
+<br><br><br><br><br><br><br><br><br><br><br><Br>
+    <div class="row">
+        {% for book_details in book_details_list %}
+
+        <div class="col-md-4 mb-4">
+                <div class="bodycontainer" style="display: block; border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #F5CBA7; margin: 0 auto; ">
+
+            <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ book_details.BookTitle}}</h5>
+                    <p class="card-text">BookId {{ book_details.BookId }}</p>
+                    <p class="card-text">BookYear {{ book_details.BookYear }}</p>
+                    <p class="card-text">published_year {{ book_details.published_year }}</p>
+                    <p class="card-text">Remarks {{ book_details.remarks }}</p>
+
+                    <a href="{% url 'librarian:edit_book_details' book_details.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'librarian:delete_book_details' book_details.id %}" class="btn btn-danger">Delete</a>
+
+                </div>
+            </div>
+        </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

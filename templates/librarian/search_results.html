@@ -1,0 +1,30 @@
+<!--&lt;!&ndash; search_results.html &ndash;&gt;-->
+<!--{% load static %}-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Search Results</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Search Results</h1>-->
+
+<!--    <form method="GET" action="{% url 'search_results' %}">-->
+<!--        <input type="text" name="query" placeholder="Search...">-->
+<!--        <button type="submit">Search</button>-->
+<!--    </form>-->
+
+<!--    {% if query %}-->
+<!--        <h2>Search Results for "{{ query }}"</h2>-->
+<!--        {% if results %}-->
+<!--            <ul>-->
+<!--            {% for item in results %}-->
+<!--                <li>{{ item }}</li>-->
+<!--            {% endfor %}-->
+<!--            </ul>-->
+<!--        {% else %}-->
+<!--            <p>No results found.</p>-->
+<!--        {% endif %}-->
+<!--    {% endif %}-->
+<!--{% endblock %}-->
+<!--</body>-->
+<!--</html>-->
